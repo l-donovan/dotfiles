@@ -26,13 +26,43 @@ require('packer').startup(function()
         config = 'vim.cmd[[ALEEnable]]'
     }
 
+    use {
+        'folke/todo-comments.nvim',
+        requires = 'nvim-lua/plenary.nvim',
+        config = function()
+            require('todo-comments').setup {
+              -- your configuration comes here
+              -- or leave it empty to use the default settings
+              -- refer to the configuration section below
+            }
+        end
+    }
+
+    use {
+        'nvim-telescope/telescope.nvim',
+        requires = {
+            {'nvim-lua/popup.nvim'},
+            {'nvim-lua/plenary.nvim'}
+        }
+    }
+
+    use {
+        'folke/trouble.nvim',
+        requires = 'kyazdani42/nvim-web-devicons',
+        config = function()
+            require('trouble').setup {
+                -- your configuration comes here
+                -- or leave it empty to use the default settings
+                -- refer to the configuration section below
+            }
+        end
+    }
+
     use { 'iamcco/markdown-preview.nvim', run = 'cd app && yarn install', cmd = 'MarkdownPreview' }
     use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
     use { 'andymass/vim-matchup', event = 'VimEnter' }
-    use { 'junegunn/fzf', run = function() vim.fn['fzf#install'](0) end }
     use 'rstacruz/vim-closer'
     use 'neovim/nvim-lspconfig'
-    use 'junegunn/fzf.vim'
     use 'junegunn/limelight.vim'
     use 'hrsh7th/nvim-compe'
     use 'morhetz/gruvbox'
@@ -92,9 +122,12 @@ vim.cmd 'colorscheme gruvbox'
 vim.cmd 'au VimEnter * highlight Comment cterm=italic'
 
 -- Keymappings
-vim.api.nvim_set_keymap('n', '<c-p>', ':FZF<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<c-k>', ':Limelight!!<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<esc>', ':noh<CR><esc>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<c-p>', ':Telescope find_files<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<c-g>', ':Telescope live_grep<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<c-b>', ':Telescope buffers<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<c-i>', ':Telescope help_tags<CR>', { noremap = true, silent = true })
 
 -- Autocompletion
 vim.o.completeopt = 'menuone,noselect'
