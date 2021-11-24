@@ -2,11 +2,12 @@
 export ZSH=~/.oh-my-zsh
 ZSH_THEME="af-magic"
 DEFAULT_USER="ldonovan"
-plugins=(git tmux fzf)
+plugins=(git tmux fzf virtualenv)
 source $ZSH/oh-my-zsh.sh
 
 # PATH
-export PATH="$HOME/bin:$PATH"
+export PATH="${HOME}/bin:${PATH}"
+export PATH="${HOME}/.pyenv/shims:${PATH}"
 
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
@@ -27,13 +28,19 @@ fi
 [[ -x $(which nvim) ]] && alias vim="nvim"
 alias c="clear"
 alias ssh='TERM=screen-256color ssh'
+alias pgit="GIT_SSH_COMMAND='ssh -i ~/.ssh/id_ed25519_personal -o IdentitiesOnly=yes' git"
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
 export FZF_DEFAULT_COMMAND='fd --type f'
 export BYOBU_PREFIX='/usr/local'
+export HISTSIZE=10000
+export SAVEHIST=10000
 
-echo "\e[36m$USER\e[39m@\e[34m$HOST \e[92m`date +'%H:%M:%S'`"
+echo "\e[36m$USERNAME\e[39m@\e[34m$HOST \e[92m`date +'%H:%M:%S'`"
 
 # Device-specific configuration
-source ~/.local_zshrc
+[[ -f ~/.local_zshrc ]] && source ~/.local_zshrc
+
+alias luamake=/Users/ldonovan/.config/nvim/ls/lua-language-server/3rd/luamake/luamake
+alias go='/usr/local/opt/tcl-tk/bin/tclsh ~/bin/go/go.tcl'
