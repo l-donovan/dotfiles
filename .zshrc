@@ -1,6 +1,6 @@
 # Oh-My-Zsh configuration
 export ZSH=~/.oh-my-zsh
-ZSH_THEME="af-magic"
+ZSH_THEME="af-magic-luke"
 DEFAULT_USER="ldonovan"
 plugins=(git tmux fzf virtualenv)
 source $ZSH/oh-my-zsh.sh
@@ -41,6 +41,3 @@ echo "\e[36m$USERNAME\e[39m@\e[34m$HOST \e[92m`date +'%H:%M:%S'`"
 
 # Device-specific configuration
 [[ -f ~/.local_zshrc ]] && source ~/.local_zshrc
-
-alias luamake=/Users/ldonovan/.config/nvim/ls/lua-language-server/3rd/luamake/luamake
-alias go='/usr/local/opt/tcl-tk/bin/tclsh ~/bin/go/go.tcl'

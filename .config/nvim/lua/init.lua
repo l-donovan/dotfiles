@@ -198,6 +198,7 @@ require('packer').startup(function()
     use 'bronson/vim-trailing-whitespace'
     use 'godlygeek/tabular'
     use 'tikhomirov/vim-glsl'
+    use 'airblade/vim-gitgutter'
 end)
 
 -- Auto compile when there are changes in init.lua
