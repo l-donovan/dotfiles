@@ -19,3 +19,7 @@ mkdir -p ~/.config/nvim/lua
 ln .config/nvim/init.vim ~/.config/nvim/init.vim
 ln .config/nvim/lua/init.lua ~/.config/nvim/lua/init.lua
 ln .zshrc ~/.zshrc
+
+mkdir -p ~/.config/kitty
+ln .config/kitty/kitty.conf ~/.config/kitty/kitty.conf
+ln .config/kitty/gruvbox_light.conf ~/.config/kitty/gruvbox_light.conf
